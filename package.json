@@ -1,6 +1,6 @@
 {
   "name": "enzyme-adapter-react-16-with-shallow-effects",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shallow enzyme rendering with effect support",
   "homepage": "https://github.com/davidmfoley/enzyme-adapter-react-16-with-shallow-effects.git",
   "main": "build",
