@@ -1,8 +1,8 @@
 {
   "name": "enzyme-adapter-react-16-with-shallow-effects",
-  "version": "1.15.3",
-  "description": "JavaScript Testing utilities for React",
-  "homepage": "https://enzymejs.github.io/enzyme/",
+  "version": "1.0.0",
+  "description": "Shallow enzyme rendering with effect support",
+  "homepage": "https://github.com/davidmfoley/enzyme-adapter-react-16-with-shallow-effects.git",
   "main": "build",
   "scripts": {
     "clean": "rimraf build",
@@ -11,31 +11,27 @@
     "prebuild": "npm run clean",
     "build": "babel --source-maps=both src --out-dir build",
     "watch": "npm run build -- -w",
-    "prepublish": "not-in-publish || (npm run build && safe-publish-latest && cp ../../{LICENSE,README}.md ./)"
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/enzymejs/enzyme.git",
-    "directory": "packages/enzyme-adapter-react-16"
+    "url": "https://github.com/davidmfoley/enzyme-adapter-react-16-with-shallow-effects.git"
   },
   "keywords": [
     "javascript",
     "shallow rendering",
-    "shallowRender",
     "test",
-    "reactjs",
     "react",
-    "flux",
     "testing",
     "test utils",
-    "assertion helpers",
     "tdd",
-    "mocha"
+    "mocha",
+    "enzyme"
   ],
-  "author": "Jordan Harband <ljharb@gmail.com>",
-  "funding": {
-    "url": "https://github.com/sponsors/ljharb"
-  },
+  "author": "Dave Foley <davidmfoley@gmail.com>",
+  "contributors": [
+    "Jordan Harband <ljharb@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "enzyme-adapter-utils": "^1.13.1",
@@ -45,7 +41,7 @@
     "object.values": "^1.1.1",
     "prop-types": "^15.7.2",
     "react-is": "^16.13.1",
-    "react-test-renderer": "^16.0.0-0",
+    "react-shallow-renderer": "^16.13.1",
     "semver": "^5.7.0"
   },
   "peerDependencies": {

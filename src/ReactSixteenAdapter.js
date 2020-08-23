@@ -4,13 +4,14 @@ import ReactDOM from 'react-dom';
 // eslint-disable-next-line import/no-unresolved
 import ReactDOMServer from 'react-dom/server';
 // eslint-disable-next-line import/no-unresolved
-import ShallowRenderer from 'react-test-renderer/shallow';
-import { version as testRendererVersion } from 'react-test-renderer/package.json';
+import ShallowRenderer from 'react-shallow-renderer';
+import { version as testRendererVersion } from 'react-shallow-renderer/package.json';
 // eslint-disable-next-line import/no-unresolved
 import TestUtils from 'react-dom/test-utils';
 import semver from 'semver';
 import checkPropTypes from 'prop-types/checkPropTypes';
 import has from 'has';
+import enableEffects from './enableEffects'
 import {
   AsyncMode,
   ConcurrentMode,
@@ -526,6 +527,9 @@ class ReactSixteenAdapter extends EnzymeAdapter {
   createShallowRenderer(options = {}) {
     const adapter = this;
     const renderer = new ShallowRenderer();
+
+    enableEffects(renderer);
+
     const { suspenseFallback } = options;
     if (typeof suspenseFallback !== 'undefined' && typeof suspenseFallback !== 'boolean') {
       throw TypeError('`options.suspenseFallback` should be boolean or undefined');
@@ -701,6 +705,7 @@ class ReactSixteenAdapter extends EnzymeAdapter {
         }
       },
       unmount() {
+        renderer._dispatcher.cleanupEffects();
         renderer.unmount();
       },
       getNode() {
