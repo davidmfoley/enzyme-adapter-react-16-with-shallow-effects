@@ -18,6 +18,8 @@ const effectInstance = () => {
         return;
       }
 
+      lastDependencies = dependencies;
+      
       cleanupFn();
 
       cleanupFn = fn() || (() => {});
